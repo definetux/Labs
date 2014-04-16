@@ -133,6 +133,11 @@ namespace FootballClubsClient
         /// <returns></returns>
         public IEnumerable<PlayerInfo> CheckSort( IEnumerable<PlayerInfo> result )
         {
+            if( currentQuery == null )
+                return null;
+            if( result == null )
+                return null;
+
             int rowsCount;
             Int32.TryParse( tbRowsCount.Text, out rowsCount );
             if( tbRowsCount.Text == String.Empty )

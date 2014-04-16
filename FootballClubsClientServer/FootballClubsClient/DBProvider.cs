@@ -24,12 +24,6 @@ namespace FootballClubsClient
             client = new NetClient( ipAddress, port );
         }
 
-        public static int Entities
-        {
-            get;
-            set;
-        }
-
         public static IEnumerable<NewClub> GetClubs( )
         {
             string result = client.SendMessage( "GetClubs|" );
@@ -172,9 +166,13 @@ namespace FootballClubsClient
             string result = client.SendMessage( "Delete" + type + '|' + entities );
         }
 
-        public static void Save( )
+        public static void Save<T>( T entity )
         {
-            throw new NotImplementedException( );
+            string entityString = JsonConvert.SerializeObject( entity );
+
+            string type = entity.GetType( ).ToString( ).Split( '.' )[ 1 ].Replace( "New", "" );
+
+            string result = client.SendMessage( "Save" + type + '|' + entityString );
         }
 
         public static IEnumerable<NewPlayer> GetPlayersByClubId( int clubId )

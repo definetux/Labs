@@ -7,7 +7,7 @@
     </Window.Background>
     <Grid>
         <Label Content="Футбольные клубы Украины" HorizontalAlignment="Center" Margin="0,73,0,0" VerticalAlignment="Top" FontFamily="Monotype Corsiva" FontSize="25" FontWeight="ExtraBold"/>
-        <Button Name="btnOpen" Content="Просмотр" HorizontalAlignment="Left" Margin="8,259.4,0,0" VerticalAlignment="Top" Width="119" Click="btnOpen_Click" FontFamily="Segoe UI Light" Style="{StaticResource SimpleButton}" FontSize="20" Visibility="Hidden"/>
+        <Button Name="btnOpen" Content="Просмотр" HorizontalAlignment="Left" Margin="8,259.4,0,0" VerticalAlignment="Top" Width="119" Click="btnOpen_Click" FontFamily="Segoe UI Light" Style="{StaticResource SimpleButton}" FontSize="20"/>
         <Button Name="btnConnect" Content="Подключиться" HorizontalAlignment="Left" Margin="151,259,0,0" VerticalAlignment="Top" Width="137" FontFamily="Segoe UI Light" Style="{StaticResource SimpleButton}" FontSize="20" Click="btnConnect_Click"/>
         <Button Name="btnClose" Content="Выход" HorizontalAlignment="Left" Margin="311,259,0,0" VerticalAlignment="Top" Width="116" Click="btnClose_Click" FontFamily="Segoe UI Light" RenderTransformOrigin="0.5,0.5" Style="{StaticResource SimpleButton}" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" Margin="448,236,0,0" TextWrapping="Wrap" Text="Разработал студент группы СИИ-ПРОГ&#13;Гончарук Максим" VerticalAlignment="Top" Height="54" Width="142" TextAlignment="Right" FontSize="14" Foreground="#FFA8F58A"/>

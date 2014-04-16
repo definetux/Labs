@@ -116,43 +116,6 @@ namespace FootballClubsClient
                 this.SelectedId = ((NewClub)clubsDataGrid.SelectedItem).ClubID;
 
             var clubs = DBProvider.GetClubsById(this.SelectedId);
-
-            //if (clubs.Count != 0)
-            //    imgLogo.Source = DataConverter.BitmapFromByteArray(clubs[0].Logo);
-            //else
-            //    imgLogo.Source = null;
-
-            //if (audioPlayer == AudioPlayer.Play)
-            //{
-            //    player.Stop();
-            //    audioPlayer = AudioPlayer.Stop;
-            //}
-        }
-
-        /// <summary>
-        /// Проиграть аудио
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnPlayAnthem_Click(object sender, RoutedEventArgs e)
-        {
-            //if (audioPlayer == AudioPlayer.Stop)
-            //{
-            //    var clubs = EntitiesController.GetClubsById(this.SelectedId);
-            //    if (clubs.Count != 0)
-            //    {
-            //        player = DataConverter.AudioFromByteArray(clubs[0].Anthem);
-            //        if (player == null)
-            //            return;
-            //        player.Play();
-            //        audioPlayer = AudioPlayer.Play;
-            //    }
-            //}
-            //else
-            //{
-            //    player.Stop();
-            //    audioPlayer = AudioPlayer.Stop;
-            //}
         }
 
         /// <summary>
@@ -174,19 +137,10 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            //if (clubsDataGrid.SelectedItem is Club)
-            //    this.SelectedId = ((Club)clubsDataGrid.SelectedItem).ClubID;
+            if( clubsDataGrid.SelectedItem is NewClub )
+                this.SelectedId = ( ( NewClub )clubsDataGrid.SelectedItem ).ClubID;
 
-            //var entities = EntitiesController.Entities;
-
-            //var oldClub = entities.Clubs.Single(p => p.ClubID == SelectedId);
-
-            //oldClub.Name = ((Club)clubsDataGrid.SelectedItem).Name;
-            //oldClub.City = ((Club)clubsDataGrid.SelectedItem).City;
-            //oldClub.NumberOfMatches = ((Club)clubsDataGrid.SelectedItem).NumberOfMatches;
-            //oldClub.WinningMatches = ((Club)clubsDataGrid.SelectedItem).WinningMatches;
-
-            //EntitiesController.Save(entities);
+            DBProvider.Save( clubsDataGrid.SelectedItem as NewClub );
         }
 
         /// <summary>

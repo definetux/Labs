@@ -90,20 +90,10 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            //if (staffsDataGrid.SelectedItem is Staff)
-            //    this.SelectedId = ((Staff)staffsDataGrid.SelectedItem).StaffID;
+            if( staffsDataGrid.SelectedItem is NewStaff )
+                this.SelectedId = ( ( NewStaff )staffsDataGrid.SelectedItem ).StaffID;
 
-            //var entities = EntitiesController.Entities;
-
-            //var oldStaff = entities.Staffs.Single(p => p.StaffID == SelectedId);
-
-            //oldStaff.LastName = ((Staff)staffsDataGrid.SelectedItem).LastName;
-            //oldStaff.FirstName = ((Staff)staffsDataGrid.SelectedItem).FirstName;
-            //oldStaff.Patronymic = ((Staff)staffsDataGrid.SelectedItem).Patronymic;
-            //oldStaff.Post = ((Staff)staffsDataGrid.SelectedItem).Post;
-            //oldStaff.Experience = ((Staff)staffsDataGrid.SelectedItem).Experience;
-
-            //EntitiesController.Save(entities);
+            DBProvider.Save( staffsDataGrid.SelectedItem as NewStaff );
         }
     }
 }

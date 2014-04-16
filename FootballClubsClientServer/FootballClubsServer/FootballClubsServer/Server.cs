@@ -33,6 +33,12 @@ namespace FootballClubsServer
             try
             {
                 tcpL.Start( );
+
+                string log = "Начало сессии";
+
+                Logger.PringLog( log ); 
+                Logger.SaveLog( log );
+
                 WaitSocket( );
                 return true;
             }
@@ -49,7 +55,10 @@ namespace FootballClubsServer
             {
                 TcpClient socket = tcpL.AcceptTcpClient( );
 
-                Console.WriteLine( "Клиент подключился" );
+                string log = "Подключился клиент: " + socket.Client.RemoteEndPoint.ToString( );
+                
+                Logger.PringLog( log );
+                Logger.SaveLog( log );
 
                 new Thread( new ParameterizedThreadStart( HandlingSocket ) ).Start( socket );
             }
@@ -82,7 +91,11 @@ namespace FootballClubsServer
                     }
                     catch( IOException )
                     {
-                        Console.WriteLine( "Клиент отключился" );
+
+                        string log = "Отключился клиент: " + socket.Client.RemoteEndPoint.ToString( );
+
+                        Logger.PringLog( log );
+                        Logger.SaveLog( log );
                         return;
                     }
                 }
@@ -93,6 +106,7 @@ namespace FootballClubsServer
         {
             string[ ] args = message.Split( '|' );
             string result = "";
+            string log = "";
 
             switch( args[0] )
             {
@@ -107,7 +121,7 @@ namespace FootballClubsServer
 
                         EntitiesController.AddObject( club );
 
-                        result = "Добавление успешно";
+                        log = result = "Добавление клуба успешно завершено";
                     }
                     break;
                 case "AddPlayer":
@@ -125,7 +139,7 @@ namespace FootballClubsServer
                         
                         EntitiesController.AddObject( player );
 
-                        result = "Добавление успешно";
+                        log = result = "Добавление игрока успешно завершено";
                     }
                     break;
                 case "AddStaff":
@@ -141,7 +155,65 @@ namespace FootballClubsServer
                         
                         EntitiesController.AddObject( staff );
 
-                        result = "Добавление успешно";
+                        log = result = "Добавление сотрудника успешно завершено";
+                    }
+                    break;
+                case "SaveClub":
+                    {
+                        var newClub = JsonConvert.DeserializeObject<NewClub>( args[ 1 ] );
+
+                        var entities = EntitiesController.Entities;
+
+                        var oldClub = entities.Clubs.Single( p => p.ClubID == newClub.ClubID );
+
+                        oldClub.Name = newClub.Name;
+                        oldClub.City = newClub.City;
+                        oldClub.NumberOfMatches = newClub.NumberOfMatches;
+                        oldClub.WinningMatches = newClub.WinningMatches;
+
+                        EntitiesController.Save( entities );
+
+                        log = result = "Обновление клуба успешно завершено";
+                    }
+                    break;
+                case "SavePlayer":
+                    {
+                        var newPlayer = JsonConvert.DeserializeObject<NewPlayer>( args[ 1 ] );
+
+                        var entities = EntitiesController.Entities;
+
+                        var player = entities.Players.Single( p => p.PlayerID == newPlayer.PlayerID );
+
+                        player.FirstName = newPlayer.FirstName;
+                        player.LastName = newPlayer.LastName;
+                        player.Patronymic = newPlayer.Patronymic;
+                        player.Number = newPlayer.Number;
+                        player.Position = newPlayer.Position;
+                        player.Birthdate = newPlayer.Birthdate;
+                        player.Goals = newPlayer.Goals;
+
+                        EntitiesController.Save( entities );
+
+                        log = result = "Обновление игрока успешно завершено";
+                    }
+                    break;
+                case "SaveStaff":
+                    {
+                        var newStaff = JsonConvert.DeserializeObject<NewStaff>( args[ 1 ] );
+
+                        var entities = EntitiesController.Entities;
+
+                        var staff = entities.Staffs.Single( p => p.StaffID == newStaff.StaffID );
+
+                        staff.FirstName = newStaff.FirstName;
+                        staff.LastName = newStaff.LastName;
+                        staff.Patronymic = newStaff.Patronymic;
+                        staff.Post = newStaff.Post;
+                        staff.Experience = newStaff.Experience;
+
+                        EntitiesController.Save( entities );
+
+                        log = result = "Обновление сотрудника успешно завершено";
                     }
                     break;
                 case "DeleteClub":
@@ -156,10 +228,10 @@ namespace FootballClubsServer
                                 EntitiesController.DeleteObject( item );
                             }
 
-                            result = "Удаление успешно";
+                            log = result = "Удаление клуба успешно завершено";
                         }
                         else
-                            result = "Не удалось удалисть запись";
+                            log = result = "Не удалось удалисть запись";
                     }
                     break;
                 case "DeletePlayer":
@@ -174,10 +246,10 @@ namespace FootballClubsServer
                                 EntitiesController.DeleteObject( item );
                             }
 
-                            result = "Удаление успешно";
+                            log = result = "Удаление игрока успешно завершено";
                         }
                         else
-                            result = "Не удалось удалисть запись";
+                            log = result = "Не удалось удалисть запись";
                     }
                     break;
                 case "DeleteStaff":
@@ -192,10 +264,10 @@ namespace FootballClubsServer
                                 EntitiesController.DeleteObject( item );
                             }
 
-                            result = "Удаление успешно";
+                            log = result = "Удаление сотрудника успешно завершено";
                         }
                         else
-                            result = "Не удалось удалисть запись";
+                            log = result = "Не удалось удалисть запись";
                     }
                     break;
                 case "GetClubs":
@@ -211,6 +283,9 @@ namespace FootballClubsServer
                                     });
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить все клубы";
+ 
 
                     }
                     break;
@@ -231,6 +306,9 @@ namespace FootballClubsServer
                                                        } );
 
                         result = JsonConvert.SerializeObject( query );
+
+
+                        log = "Выполнен запрос: получить игроков клуба по ID клуба";
                     }
                     break;
                 case "GetClubsById":
@@ -246,6 +324,9 @@ namespace FootballClubsServer
                                                        } );
 
                         result = JsonConvert.SerializeObject( query );
+
+
+                        log = "Выполнен запрос: получить все клубы по ID";
                     }
                     break;
                 case "GetPlayersById":
@@ -265,6 +346,8 @@ namespace FootballClubsServer
                                                        } );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить всех игроков по ID";
                     }
                     break;
                 case "GetStaffsById":
@@ -282,6 +365,8 @@ namespace FootballClubsServer
                                                          } );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить всех сотрудников по ID";
                     }
                     break;
                 case "GetStaffsByClubId":
@@ -299,6 +384,8 @@ namespace FootballClubsServer
                                                        };
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить всех сотрудников по ID клуба";
                     }
                     break;
                 case "GetBestPlayers":
@@ -306,6 +393,8 @@ namespace FootballClubsServer
                         IEnumerable<BestPlayers> query = EntitiesController.GetBestPlayers( );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить лучших игроков";
                     }
                     break;
 
@@ -314,6 +403,8 @@ namespace FootballClubsServer
                         IEnumerable<StaffsInfo> query = EntitiesController.GetCountStaffByClub( );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить количество сотрудников по клубам";
                     }
                     break;
                 case "GetPlayersByClubName":
@@ -321,6 +412,8 @@ namespace FootballClubsServer
                         IEnumerable<PlayerInfo> query = EntitiesController.GetPlayersByClubName( args[1] );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить всех игроков по названию клуба";
                     }
                     break;
                 case "GetOldPlayers":
@@ -328,6 +421,8 @@ namespace FootballClubsServer
                         IEnumerable<PlayerInfo> query = EntitiesController.GetOldPlayers( args[ 1 ] );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить игроков старше N лет";
                     }
                     break;
                 case "GetPlayersByClubWin":
@@ -336,6 +431,8 @@ namespace FootballClubsServer
                                                                                                 int.Parse( args[2] ) );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить игроков по победам клуба";
                     }
                     break;
                 case "GetPlayersByGoals":
@@ -344,6 +441,8 @@ namespace FootballClubsServer
                                                                                               int.Parse( args[ 2 ] ) );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить игроков по забитым мячам";
                     }
                     break;
                 case "GetPlayersByAge":
@@ -352,6 +451,8 @@ namespace FootballClubsServer
                                                                                             int.Parse( args[ 2 ] ) );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить игроков по возрасту";
                     }
                     break;
                 case "GetPlayerInfo":
@@ -367,6 +468,8 @@ namespace FootballClubsServer
                                                                                            bool.Parse( args[ 9 ] ) );
 
                         result = JsonConvert.SerializeObject( query );
+
+                        log = "Выполнен запрос: получить информацию об игроках";
                     }
                     break;
                 case "GetQueryOr":
@@ -377,6 +480,8 @@ namespace FootballClubsServer
                         IEnumerable<PlayerInfo> queryResult = EntitiesController.GetQueryOr( queryFirst, querySecond );
 
                         result = JsonConvert.SerializeObject( queryResult );
+
+                        log = "Выполнен запрос: объединение запросов";
                     }
                     break;
                 case "GetQueryAnd":
@@ -387,10 +492,15 @@ namespace FootballClubsServer
                         IEnumerable<PlayerInfo> queryResult = EntitiesController.GetQueryAnd( queryFirst, querySecond );
 
                         result = JsonConvert.SerializeObject( queryResult );
+
+                        log = "Выполнен запрос: пересечение запросов";
                     }
                     break;
             }
             SendMessage( result );
+
+            Logger.PringLog( log );
+            Logger.SaveLog( log );
         }
 
         public void SendMessage( string message )

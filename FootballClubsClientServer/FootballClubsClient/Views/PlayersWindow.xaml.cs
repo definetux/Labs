@@ -90,22 +90,10 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-        //    if (playersDataGrid.SelectedItem is Club)
-        //        this.SelectedId = ((Player)playersDataGrid.SelectedItem).PlayerID;
+            if( playersDataGrid.SelectedItem is NewPlayer )
+                this.SelectedId = ( ( NewPlayer )playersDataGrid.SelectedItem ).PlayerID;
 
-        //    var entities = EntitiesController.Entities;
-
-        //    var oldPlayer = entities.Players.Single(p => p.PlayerID == SelectedId);
-
-        //    oldPlayer.FirstName = ((Player)playersDataGrid.SelectedItem).FirstName;
-        //    oldPlayer.LastName = ((Player)playersDataGrid.SelectedItem).LastName;
-        //    oldPlayer.Patronymic = ((Player)playersDataGrid.SelectedItem).Patronymic;
-        //    oldPlayer.Birthdate = ((Player)playersDataGrid.SelectedItem).Birthdate;
-        //    oldPlayer.Number = ((Player)playersDataGrid.SelectedItem).Number;
-        //    oldPlayer.Position = ((Player)playersDataGrid.SelectedItem).Position;
-        //    oldPlayer.Goals = ((Player)playersDataGrid.SelectedItem).Goals;
-
-        //    EntitiesController.Save(entities);
+            DBProvider.Save( playersDataGrid.SelectedItem as NewPlayer );
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FootballClubsClient
 {
@@ -19,6 +20,8 @@ namespace FootballClubsClient
 
         private TcpClient tcpC;
 
+        public static bool IsConnected = false;
+
         public NetClient( string ip, int port )
         {
             this.ipAddress = ip;
@@ -31,6 +34,8 @@ namespace FootballClubsClient
             try
             {
                 tcpC.Connect( ipAddress, port );
+
+                IsConnected = true;
 
                 return true;
             }
@@ -64,11 +69,13 @@ namespace FootballClubsClient
             }
             catch( IOException )
             {
-                Console.WriteLine( "Потеряна связь с сервером" );
+                MessageBox.Show( "Потеряна связь с сервером" );
+                IsConnected = false;
+                
             }
             catch( InvalidOperationException)
             {
-                Console.WriteLine( "Нет соединения" );
+                MessageBox.Show( "Нет соединения" );
             }
             return Request;
         }

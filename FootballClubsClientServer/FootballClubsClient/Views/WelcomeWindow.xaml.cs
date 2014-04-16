@@ -44,8 +44,15 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
+            if( NetClient.IsConnected == true )
+            {
+                MainWindow mainWindow = new MainWindow( );
+                mainWindow.ShowDialog( );
+            }
+            else
+            {
+                MessageBox.Show( "Проверьте подключение" );
+            }
         }
 
         private void btnConnect_Click( object sender, RoutedEventArgs e )
@@ -56,14 +63,8 @@ namespace FootballClubsClient
             connectWindow.Show( out port, out ip );
 
             DBProvider.CreateClient( port, ip );
-            if( DBProvider.Client.Connect( ) == true )
-            {
-                btnOpen.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                btnOpen.Visibility = Visibility.Hidden;
-            }
+            DBProvider.Client.Connect( );
+
 
         }
     }

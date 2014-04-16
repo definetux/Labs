@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FootballClubsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FootballClubsEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Clubs" EntityType="FootballClubsModel.Club" />
+    <EntitySet Name="Players" EntityType="FootballClubsModel.Player" />
+    <EntitySet Name="Staffs" EntityType="FootballClubsModel.Staff" />
+    <AssociationSet Name="Club___Player" Association="FootballClubsModel.Club___Player">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="Player" EntitySet="Players" />
+    </AssociationSet>
+    <AssociationSet Name="Club___Staff" Association="FootballClubsModel.Club___Staff">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Club">
+    <Key>
+      <PropertyRef Name="ClubID" />
+    </Key>
+    <Property Name="ClubID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="NumberOfMatches" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WinningMatches" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Anthem" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Players" Relationship="FootballClubsModel.Club___Player" FromRole="Club" ToRole="Player" />
+    <NavigationProperty Name="Staffs" Relationship="FootballClubsModel.Club___Staff" FromRole="Club" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="PlayerID" />
+    </Key>
+    <Property Name="PlayerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ClubID" Type="Int32" />
+    <Property Name="LastName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Number" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Position" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Goals" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Birthdate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Club" Relationship="FootballClubsModel.Club___Player" FromRole="Player" ToRole="Club" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ClubID" Type="Int32" />
+    <Property Name="LastName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Post" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+    <Property Name="Experience" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Club" Relationship="FootballClubsModel.Club___Staff" FromRole="Staff" ToRole="Club" />
+  </EntityType>
+  <Association Name="Club___Player">
+    <End Role="Club" Type="FootballClubsModel.Club" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Player" Type="FootballClubsModel.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="ClubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Club___Staff">
+    <End Role="Club" Type="FootballClubsModel.Club" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Staff" Type="FootballClubsModel.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="ClubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="FootballClubsClient.AddPlayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource WindowBackground}"
+        Title="Добавить игрока" Height="262.667" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Name="stackPanel1">
+            <TextBlock Height="23" Name="textBlock1" Text="Фамилия:" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock2" Text="Имя:" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock3" Text="Отчество:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock7" Text="Дата рождения:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock4" Text="Номер:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock5" Text="Позиция:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock6" Text="Забитые мячи:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <Button Content="Готово" Name="btnOK" Height="30" Margin="5" Style="{StaticResource SimpleButton}" Click="btnOK_Click" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Name="stackPanel2">
+            <TextBox Height="23" Name="txtLastName" Margin="5,2,2,2" />
+            <TextBox Height="23" Name="txtFirstName" Margin="5,2,2,2" />
+            <TextBox Height="23" Name="txtPatronymic" Margin="5,2,2,2" />
+            <DatePicker Height="23" Name="dpBirthdate" Margin="5,2,2,2" />
+            <TextBox Height="23" Name="txtNumber" Margin="5,2,2,2" />
+            <TextBox Height="23" Name="txtPosition" Margin="5,2,2,2" />
+            <TextBox Height="23" Name="txtGoals" Margin="5,2,2,2" />
+            <Button Content="Отмена" Name="btnCancel" Height="30" Style="{StaticResource SimpleButton}" Click="btnCancel_Click" Margin="5" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="FootballClubsClient.AddClubWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource WindowBackground}"
+        Title="Добавить клуб..." Height="240" Width="314" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Name="stackPanel1">
+            <TextBlock Height="23" Name="textBlock1" Text="Наименование:" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="23" Name="textBlock2" Text="Город:" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="37" Name="textBlock3" Text="Количество проведенных матчей:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <TextBlock Height="34" Name="textBlock4" Text="Количество выигранных матчей:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,2,5,2" />
+            <Button Content="Готово" Name="btnOK" Height="30" Margin="5,11,5,5" Style="{StaticResource SimpleButton}" Click="btnOK_Click" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Name="stackPanel2">
+            <TextBox Name="txtClubName" Margin="5,2,2,0" />
+            <TextBox Name="txtCity" Margin="5,2,2,0" />
+            <TextBox Name="txtPlayed" Margin="5,20,2,0" />
+            <TextBox Name="txtWin" Margin="5,20,2,2" />
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,0" HorizontalAlignment="Center" Width="148"/>
+            <StackPanel Orientation="Horizontal" Margin="5,2,0,0" HorizontalAlignment="Center" Width="148"/>
+            <Button Content="Отмена" Name="btnCancel" Height="30" Style="{StaticResource SimpleButton}" Click="btnCancel_Click" Margin="5" />
+        </StackPanel>
+    </Grid>
+</Window>

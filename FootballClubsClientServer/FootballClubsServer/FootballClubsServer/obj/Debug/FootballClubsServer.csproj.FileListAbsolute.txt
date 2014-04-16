@@ -1,0 +1,11 @@
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\FootballClubsServer.exe.config
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\FootballClubsServer.exe
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\FootballClubsServer.pdb
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\EntityFramework.dll
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\EntityFramework.xml
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\obj\Debug\FootballClubsServer.exe
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\obj\Debug\FootballClubsServer.pdb
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\Data\FootballClubs.sdf
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\obj\Debug\FootballClubsServer.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\Newtonsoft.Json.dll
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\Newtonsoft.Json.xml

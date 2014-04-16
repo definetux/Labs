@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:FootballClubsClient" mc:Ignorable="d" x:Class="FootballClubsClient.PlayersWindow"
+        Style="{StaticResource WindowBackground}"
+        Title="Игроки" Height="304" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44*" />
+            <RowDefinition Height="217*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" x:Name="stackPanel1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0" Width="Auto">
+            <Button Content="Добавить игрока" x:Name="btnAdd" FontSize="16" Style="{StaticResource SimpleButton}" Margin="2,5" Click="btnAdd_Click" />
+            <Button Content="Обновить" x:Name="btnUpdate" FontSize="16" Style="{StaticResource SimpleButton}" Margin="2,5" Click="btnUpdate_Click"/>
+            <Button Content="Удалить игрока" x:Name="btnDelete" FontSize="16" Style="{StaticResource SimpleButton}" Margin="2,5" Click="btnDelete_Click" />
+        </StackPanel>
+        <DataGrid x:Name="playersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0" Grid.Row="1" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="playersDataGrid_SelectionChanged" Background="{x:Null}" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>
+                    <Setter Property="BorderBrush" Value="Green"/>
+                    <Setter Property="BorderThickness" Value="0.55"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="playerIDColumn" Binding="{Binding PlayerID}" Header="Player ID" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn x:Name="clubIDColumn" Binding="{Binding ClubID}" Header="Club ID" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Фамилия" Width="*" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding FirstName}" Header="Имя" Width="*" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="patronymicColumn" Binding="{Binding Patronymic}" Header="Отчество" Width="*" CanUserResize="False"/>
+                <DataGridTemplateColumn x:Name="birthdateColumn" Header="Дата рождения" Width="SizeToHeader" CanUserResize="False" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthdate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="numberColumn" Binding="{Binding Number}" Header="Номер" Width="SizeToHeader" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="positionColumn" Binding="{Binding Position}" Header="Позиция" Width="*" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="goalsColumn" Binding="{Binding Goals}" Header="Забитые мячи" Width="*" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

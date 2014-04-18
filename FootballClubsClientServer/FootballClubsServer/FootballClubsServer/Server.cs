@@ -20,7 +20,7 @@ namespace FootballClubsServer
 
         private TcpListener tcpL;
 
-        private NetworkStream stream;
+        //private NetworkStream stream;
 
         public Server( int port )
         {
@@ -76,7 +76,7 @@ namespace FootballClubsServer
                     int bytesRec = 0;
                     string message = "";
 
-                    stream = socket.GetStream( );
+                    NetworkStream stream = socket.GetStream( );
 
                     try
                     {
@@ -84,10 +84,12 @@ namespace FootballClubsServer
                         {
                             bytesRec = stream.Read( buffer, 0, buffer.Length );
                             message += Encoding.Unicode.GetString( buffer, 0, bytesRec );
+                            Thread.Sleep( 1 );
+                            
                         } while( stream.DataAvailable );
 
                         if( message != String.Empty )
-                            HandlignMessage( message );
+                            HandlignMessage( message, stream );
                     }
                     catch( IOException )
                     {
@@ -102,7 +104,7 @@ namespace FootballClubsServer
             }
         }
 
-        private void HandlignMessage( string message )
+        private void HandlignMessage( string message, NetworkStream stream )
         {
             string[ ] args = message.Split( '|' );
             string result = "";
@@ -497,13 +499,13 @@ namespace FootballClubsServer
                     }
                     break;
             }
-            SendMessage( result );
+            SendMessage( result, stream );
 
             Logger.PringLog( log );
             Logger.SaveLog( log );
         }
 
-        public void SendMessage( string message )
+        public void SendMessage( string message, NetworkStream stream )
         {
             byte[ ] data = Encoding.Unicode.GetBytes( message );
 

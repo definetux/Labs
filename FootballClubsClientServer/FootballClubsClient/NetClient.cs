@@ -72,7 +72,7 @@ namespace FootballClubsClient
                 MessageBox.Show( "Потеряна связь с сервером" );
                 IsConnected = false;
                 
-            }
+            }   
             catch( InvalidOperationException)
             {
                 MessageBox.Show( "Нет соединения" );

@@ -113,9 +113,9 @@ namespace FootballClubsClient
         private void clubsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (clubsDataGrid.SelectedItem is NewClub)
-                this.SelectedId = ((NewClub)clubsDataGrid.SelectedItem).ClubID;
+               this.SelectedId = ((NewClub)clubsDataGrid.SelectedItem).ClubID;
 
-            var clubs = DBProvider.GetClubsById(this.SelectedId);
+            //var clubs = DBProvider.GetClubsById(this.SelectedId);
         }
 
         /// <summary>

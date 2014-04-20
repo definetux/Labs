@@ -1,0 +1,10 @@
+﻿<Window x:Class="MapBuilder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="Button" Height="23" HorizontalAlignment="Left" Name="button1" VerticalAlignment="Top" Width="75" Margin="193,84,0,0" Click="button1_Click" />
+        <TextBlock Height="170" HorizontalAlignment="Left" Margin="39,118,0,0" Name="txtCoord" Text="TextBlock" VerticalAlignment="Top" Width="442" />
+        <Image Height="158" HorizontalAlignment="Left" Margin="232,118,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="218" />
+    </Grid>
+</Window>

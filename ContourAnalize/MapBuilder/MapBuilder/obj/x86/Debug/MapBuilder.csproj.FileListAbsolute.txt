@@ -1,0 +1,12 @@
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\bin\Debug\MapBuilder.exe
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\bin\Debug\MapBuilder.pdb
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MainWindow.baml
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MainWindow.g.cs
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\App.g.cs
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder_MarkupCompile.cache
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder.g.resources
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder.Properties.Resources.resources
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder.exe
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder.pdb
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\ContourAnalize\MapBuilder\MapBuilder\obj\x86\Debug\MapBuilder.csproj.GenerateResource.Cache

@@ -1,0 +1,826 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FootballClubsClient</name>
+    </assembly>
+    <members>
+        <member name="T:FootballClubsClient.BestPlayers">
+            <summary>
+            Структура запроса Лучшие игроки
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.NewClub">
+            <summary>
+            Структура таблицы Клуб
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.NetClient">
+            <summary>
+            Модуль клиента для работы с сервером
+            </summary>
+        </member>
+        <member name="F:FootballClubsClient.NetClient.BUFFER_SIZE">
+            <summary>
+            Размер буфера
+            </summary>
+        </member>
+        <member name="F:FootballClubsClient.NetClient.ipAddress">
+            <summary>
+            IP адрес сервера
+            </summary>
+        </member>
+        <member name="F:FootballClubsClient.NetClient.port">
+            <summary>
+            Номер порта сервера
+            </summary>
+        </member>
+        <member name="F:FootballClubsClient.NetClient.IsConnected">
+            <summary>
+            Проверка соединения
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.NetClient.#ctor(System.String,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="ip"> IP адрес </param>
+            <param name="port"> Номер порта </param>
+        </member>
+        <member name="M:FootballClubsClient.NetClient.Connect">
+            <summary>
+            Выполнить соединение
+            </summary>
+            <returns> Результат соединения </returns>
+        </member>
+        <member name="M:FootballClubsClient.NetClient.SendMessage(System.String)">
+            <summary>
+            Отправить сообщение серверу
+            </summary>
+            <param name="message"> Текст сообщения </param>
+            <returns> Ответ от сервера </returns>
+        </member>
+        <member name="T:FootballClubsClient.NewPlayer">
+            <summary>
+            Структура таблицы Игрок
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.NewStaff">
+            <summary>
+            Структура таблицы Персонал
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.StaffsInfo">
+            <summary>
+            Структура запроса Количество персонала
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.AddClubWindow">
+            <summary>
+            Interaction logic for AddClubWindow.xaml
+            </summary>
+            <summary>
+            AddClubWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.#ctor">
+            <summary>
+            Инициализация элементов окна
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.btnCancel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Закрыть форму
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Добавить запись
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.btnOpenFile_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Найти изображение на локальном диске
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.btnOpenAudio_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Найти аудио на локальном диске
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.LoadFile(System.String)">
+            <summary>
+            Загрузить файл
+            </summary>
+            <param name="fileName"> Имя файла </param>
+            <returns> Данные в виде массива байт </returns>
+        </member>
+        <member name="M:FootballClubsClient.AddClubWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.AddPlayerWindow">
+            <summary>
+            Interaction logic for AddPlayerWindow.xaml
+            </summary>
+            <summary>
+            AddPlayerWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.AddPlayerWindow.#ctor">
+            <summary>
+            Инициализация элементов управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.AddPlayerWindow.ShowDialog(System.Int32)">
+            <summary>
+            Открыть форму как модальное окно
+            </summary>
+            <param name="clubId"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddPlayerWindow.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Добавить запись
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddPlayerWindow.btnCancel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Закрыть форму
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddPlayerWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.AddStaffWindow">
+            <summary>
+            Interaction logic for AddStaffWindow.xaml
+            </summary>
+            <summary>
+            AddStaffWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.AddStaffWindow.#ctor">
+            <summary>
+            Инициализация элементов управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.AddStaffWindow.ShowDialog(System.Int32)">
+            <summary>
+            Открыть форму как модальное окно
+            </summary>
+            <param name="clubId"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddStaffWindow.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Добавить запись
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddStaffWindow.btnCancel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Закрыть форму
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.AddStaffWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.DBProvider">
+            <summary>
+            Поставщик данных от сервера
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.CreateClient(System.Int32,System.String)">
+            <summary>
+            Создание клиента
+            </summary>
+            <param name="port"> Номер порта </param>
+            <param name="ipAddress"> IP адрес сервера </param>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetClubs">
+            <summary>
+            Получить список клубов
+            </summary>
+            <returns> Список клубов </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersByClubName(System.String)">
+            <summary>
+            Получить игроков по названию клуба
+            </summary>
+            <param name="p"> Название клуба </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetOldPlayers(System.String)">
+            <summary>
+            Получить игроков по возрасту
+            </summary>
+            <param name="p"> Возраст игрока </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetBestPlayers">
+            <summary>
+            Получить лучших игроков
+            </summary>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetCountStaffByClub">
+            <summary>
+            Получить количество персонала в клубах
+            </summary>
+            <returns> Перечень клубов и количество персонала в них </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersInfo(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Получить информацию об игроках
+            </summary>
+            <param name="highWin"> Максимальное число побед клуба </param>
+            <param name="lowWin"> Минимальное число побед клуба </param>
+            <param name="highGoals"> Максимальное число забитых голов </param>
+            <param name="lowGoals"> Минимальное число забитых голов </param>
+            <param name="highAge"> Максимальный возраст игрока </param>
+            <param name="lowAge"> Минимальный возраст игрока </param>
+            <param name="rowsCount"> Количество записей </param>
+            <param name="firstChar"> Буквы названия клуба </param>
+            <param name="sort"> Параметр сортировки </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersByClubWin(System.Int32,System.Int32)">
+            <summary>
+            Получить список игроков по количеству побед клуба
+            </summary>
+            <param name="highWin"> Максимальное число побед клуба </param>
+            <param name="lowWin"> Минимальное число побед клуба </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersByGoals(System.Int32,System.Int32)">
+            <summary>
+            Получить список игроков по забитым мячам
+            </summary>
+            <param name="highGoals"> Максимальное число забитых мячей </param>
+            <param name="lowGoals"> Минимальное число забитых мячей </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersByAge(System.Int32,System.Int32)">
+            <summary>
+            Получить список игроков по возрасту
+            </summary>
+            <param name="highAge"> Максимальный возраст игрока </param>
+            <param name="lowAge"> Минимальный возраст игрока </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetQueryOr(System.Collections.Generic.IEnumerable{FootballClubsClient.PlayerInfo},System.Collections.Generic.IEnumerable{FootballClubsClient.PlayerInfo})">
+            <summary>
+            Объединить два запроса
+            </summary>
+            <param name="currentQuery"> Результат первого запроса </param>
+            <param name="secondQuery"> Результат второго запроса </param>
+            <returns> Объединение двух запросов </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetQueryAnd(System.Collections.Generic.IEnumerable{FootballClubsClient.PlayerInfo},System.Collections.Generic.IEnumerable{FootballClubsClient.PlayerInfo})">
+            <summary>
+            Пересечение двух запросов
+            </summary>
+            <param name="currentQuery"> Результат первого запроса </param>
+            <param name="secondQuery"> Результат второго запроса </param>
+            <returns> Пересечение двух запросов </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.AddObject``1(``0)">
+            <summary>
+            Добавить запись в таблицу
+            </summary>
+            <typeparam name="T"> Тип таблицы </typeparam>
+            <param name="newEntity"> Запись </param>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetClubsById(System.Int32)">
+            <summary>
+            Получить клуб по ID
+            </summary>
+            <param name="SelectedId"> ID клуба </param>
+            <returns> Запись клуба </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.DeleteObject``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Удалить запись
+            </summary>
+            <typeparam name="T"> Тип таблицы </typeparam>
+            <param name="items"> Запись </param>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.Save``1(``0)">
+            <summary>
+            Сохранить запись
+            </summary>
+            <typeparam name="T"> Тип таблицы </typeparam>
+            <param name="entity"> Запись </param>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersByClubId(System.Int32)">
+            <summary>
+            Получить список игроков по ID клуба
+            </summary>
+            <param name="clubId"> ID клуба</param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetPlayersById(System.Int32)">
+            <summary>
+            Получить игрока по ID
+            </summary>
+            <param name="SelectedId"> ID игрока </param>
+            <returns> Запись игрока </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetStaffsByClubId(System.Int32)">
+            <summary>
+            Получить список сотрудников по ID клуба
+            </summary>
+            <param name="clubId"> ID клуба </param>
+            <returns> Список сотрудников </returns>
+        </member>
+        <member name="M:FootballClubsClient.DBProvider.GetStaffsById(System.Int32)">
+            <summary>
+            Получить сотрудника по ID
+            </summary>
+            <param name="SelectedId"> ID сотрудника </param>
+            <returns> Запись сотрудника </returns>
+        </member>
+        <member name="P:FootballClubsClient.DBProvider.Client">
+            <summary>
+            Объект клиентского модуля
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.Views.ConnectWindow">
+            <summary>
+            Interaction logic for ConnectWindow.xaml
+            </summary>
+            <summary>
+            ConnectWindow
+            </summary>
+        </member>
+        <member name="F:FootballClubsClient.Views.ConnectWindow.port">
+            <summary>
+            Номер порта
+            </summary>
+        </member>
+        <member name="F:FootballClubsClient.Views.ConnectWindow.ipAddress">
+            <summary>
+            IP адрес сервера
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.Views.ConnectWindow.OnPropertyChanged(System.String)">
+            <summary>
+            Обработка изменений полей формы
+            </summary>
+            <param name="info"></param>
+        </member>
+        <member name="M:FootballClubsClient.Views.ConnectWindow.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.Views.ConnectWindow.Show(System.Int32@,System.String@)">
+            <summary>
+            Отобразить окно подключения
+            </summary>
+            <param name="port"> Номер порта </param>
+            <param name="ip"> IP адрес сервера </param>
+        </member>
+        <member name="M:FootballClubsClient.Views.ConnectWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.Views.ConnectWindow.IpAddress">
+            <summary>
+            IP адрес сервера
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.Views.ConnectWindow.Port">
+            <summary>
+            Номер порта
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.QueryWindow">
+            <summary>
+            Interaction logic for QueryWindow.xaml
+            </summary>
+            <summary>
+            QueryWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.#ctor">
+            <summary>
+            Инициализация элементов управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.btnSearch_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Показать данные в таблице
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.SetToolTip(System.String)">
+            <summary>
+            Установить подсказку, которая зависит от выбранного условия
+            </summary>
+            <param name="text"> Текст подсказки </param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.CheckSort(System.Collections.Generic.IEnumerable{FootballClubsClient.PlayerInfo})">
+            <summary>
+            Отсортировать набор, в зависимости от выбранной сортировки
+            </summary>
+            <param name="result"> Отсортированный набор </param>
+            <returns></returns>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.GetInfo">
+            <summary>
+            Вернуть информацию об игроках
+            </summary>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.cbTables_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Показывает определенные поля для фильтров, согласно выбранному пункту
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.HideControls">
+            <summary>
+            Скрыть фильтры
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.tbWinMatchesLow_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Изменить поле для ввода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.tbWinMatchesLow_LostFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Восстановить значение по умолчанию для поля ввода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.tbWinMatchesHigh_LostFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Восстановить значение по умолчанию для поля ввода
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.btnClearDg_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Очистить таблицу, установить значения по умолчанию
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.btnWinrate_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Выборка по количеству выигранных матчей
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.btnClubName_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Выборка по имени клуба
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.btnGoals_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Выборка по забитым мячам
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.btnAge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Выборка по возрасту
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.CheckCondition(System.Collections.Generic.IEnumerable{FootballClubsClient.PlayerInfo})">
+            <summary>
+            Проверить условие связи И, ИЛИ, ТОЛЬКО
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FootballClubsClient.QueryWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.WelcomeWindow">
+            <summary>
+            Interaction logic for WelcomeWindow.xaml
+            </summary>
+            <summary>
+            WelcomeWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.WelcomeWindow.#ctor">
+            <summary>
+            Инициализация элементов управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.WelcomeWindow.btnClose_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Закрыть форму
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.WelcomeWindow.btnOpen_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму Клубы
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.WelcomeWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.CustomersWindow">
+            <summary>
+            Interaction logic for Customers.xaml
+            </summary>
+            <summary>
+            CustomersWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.#ctor">
+            <summary>
+            Инициализация элементом управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.ShowDialog(System.Int32)">
+            <summary>
+            Показать форму в виде модального окна, присоединить к таблице отобранные записи
+            </summary>
+            <param name="clubId"> ID клуба </param>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.btnAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму добавление сотрудника
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Удалить сотрудника
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.staffsDataGrid_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Изменить выбранный ID
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.btnUpdate_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обновить строку в БД 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.CustomersWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.CustomersWindow.SelectedId">
+            <summary>
+            ID выбранной записи
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.DataConverter">
+            <summary>
+            Класс позволяет преобразовать данные из одного типа в другой
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.DataConverter.BitmapFromByteArray(System.Byte[])">
+            <summary>
+            Преобразует массив байт в Bitmap
+            </summary>
+            <param name="imageData"> Массив байт </param>
+            <returns> Bitmap </returns>
+        </member>
+        <member name="M:FootballClubsClient.DataConverter.AudioFromByteArray(System.Byte[])">
+            <summary>
+            Преобразует массив байт в SoundPlayer
+            </summary>
+            <param name="audioData"> Массив байт </param>
+            <returns> SoundPlayer </returns>
+        </member>
+        <member name="T:FootballClubsClient.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.#ctor">
+            <summary>
+            Инициализация элементов управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.OnClosed(System.EventArgs)">
+            <summary>
+            Закрытие формы
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.btnAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму добавления 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Удалить запись
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.btnShowPlayers_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму игроков
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.btnShowStaff_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму сотрудников
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.clubsDataGrid_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Изменить проигрывание музыки, отображение логотипа, и выбранный ID записи
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.btnSelect_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму фильтров
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.btnUpdate_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обновить данные в БД 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.clubsDataGrid_Sorting(System.Object,System.Windows.Controls.DataGridSortingEventArgs)">
+            <summary>
+            Сортировать записи по названию клуба
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.MainWindow.SelectedId">
+            <summary>
+            Выбранный ID записи
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.PlayerInfo">
+            <summary>
+            Структура запроса Информация об игроках
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.PlayersWindow">
+            <summary>
+            Interaction logic for Players.xaml
+            </summary>
+            <summary>
+            PlayersWindow
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.#ctor">
+            <summary>
+            Инициализация элементов управления
+            </summary>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.ShowDialog(System.Int32)">
+            <summary>
+            Открыть форму в виде модального окна, отобрать данные для таблицы по ID
+            </summary>
+            <param name="clubId"> ID клуба </param>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.btnAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Открыть форму добавления
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Удалить запись
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.playersDataGrid_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Изменить выбранный ID 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.btnUpdate_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обновить данные в БД
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:FootballClubsClient.PlayersWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.PlayersWindow.SelectedId">
+            <summary>
+            ID выбранной записи
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:FootballClubsClient.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

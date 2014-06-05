@@ -80,14 +80,7 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Multiselect = false;
-            //ofd.Filter = "Image (*.jpg, *png)|*.jpg; *png";
-            //if (ofd.ShowDialog() == true)
-            //{
-            //    logo = LoadFile(ofd.FileName);
-            //    txtImagePath.Text = ofd.FileName;
-            //}
+
         }
 
         /// <summary>
@@ -97,14 +90,7 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void btnOpenAudio_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Multiselect = false;
-            //ofd.Filter = "Audio (*.wav)|*.wav";
-            //if (ofd.ShowDialog() == true)
-            //{
-            //    anthem = LoadFile(ofd.FileName);
-            //    txtAnthemPath.Text = ofd.FileName;
-            //}
+
         }
 
         /// <summary>

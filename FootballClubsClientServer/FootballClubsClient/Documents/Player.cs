@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FootballClubsClient
 {
+    /// <summary>
+    /// Структура таблицы Игрок
+    /// </summary>
     class NewPlayer
     {
         public Int32 PlayerID

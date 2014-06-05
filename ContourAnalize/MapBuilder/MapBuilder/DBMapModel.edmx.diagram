@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3f41d6e80154a7898318ac1f0c4e5af" Name="Diagram1">
+        <EntityTypeShape EntityType="DBMapsModel.Camera" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMapsModel.Environment" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMapsModel.Map" Width="1.5" PointX="2.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMapsModel.Position" Width="1.5" PointX="4.625" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="DBMapsModel.Camera_env" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMapsModel.Map_env" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMapsModel.Pos_Map" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace FootballClubsServer
 {
+    /// <summary>
+    /// Класс для работы с журналированием
+    /// </summary>
     class Logger
     {
+        /// <summary>
+        /// Вывести лог в консоль
+        /// </summary>
+        /// <param name="log"> Текст лога </param>
         public static void PringLog( string log )
         {
             StringBuilder sb = new StringBuilder( );
@@ -16,6 +23,10 @@ namespace FootballClubsServer
             Console.WriteLine(sb.ToString() + ' ' + log );
         }
 
+        /// <summary>
+        /// Сохранить лог в файл
+        /// </summary>
+        /// <param name="log"> Текст лога </param>
         public static void SaveLog( string log )
         {
             StringBuilder sb = new StringBuilder( );

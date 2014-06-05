@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBMapsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DBMapsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cameras" EntityType="DBMapsModel.Camera" />
+    <EntitySet Name="Environments" EntityType="DBMapsModel.Environment" />
+    <EntitySet Name="Maps" EntityType="DBMapsModel.Map" />
+    <EntitySet Name="Positions" EntityType="DBMapsModel.Position" />
+    <AssociationSet Name="Camera_env" Association="DBMapsModel.Camera_env">
+      <End Role="Environment" EntitySet="Environments" />
+      <End Role="Camera" EntitySet="Cameras" />
+    </AssociationSet>
+    <AssociationSet Name="Map_env" Association="DBMapsModel.Map_env">
+      <End Role="Environment" EntitySet="Environments" />
+      <End Role="Map" EntitySet="Maps" />
+    </AssociationSet>
+    <AssociationSet Name="Pos_Map" Association="DBMapsModel.Pos_Map">
+      <End Role="Map" EntitySet="Maps" />
+      <End Role="Position" EntitySet="Positions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Camera">
+    <Key>
+      <PropertyRef Name="ID_camera" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Frame_rate" Type="Int32" />
+    <Property Name="Resolution_video" Type="Int32" />
+    <Property Name="Resolution_matrix" Type="Int32" />
+    <Property Name="ID_environment" Type="Int32" />
+    <Property Name="ID_camera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Environment" Relationship="DBMapsModel.Camera_env" FromRole="Camera" ToRole="Environment" />
+  </EntityType>
+  <EntityType Name="Environment">
+    <Key>
+      <PropertyRef Name="ID_environment" />
+    </Key>
+    <Property Name="Illumination" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="Robots_width" Type="Int32" />
+    <Property Name="ID_environment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Cameras" Relationship="DBMapsModel.Camera_env" FromRole="Environment" ToRole="Camera" />
+    <NavigationProperty Name="Maps" Relationship="DBMapsModel.Map_env" FromRole="Environment" ToRole="Map" />
+  </EntityType>
+  <EntityType Name="Map">
+    <Key>
+      <PropertyRef Name="ID_map" />
+    </Key>
+    <Property Name="Floor" Type="Int32" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Scale" Type="Int32" />
+    <Property Name="ID_environment" Type="Int32" />
+    <Property Name="ID_map" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Environment" Relationship="DBMapsModel.Map_env" FromRole="Map" ToRole="Environment" />
+    <NavigationProperty Name="Positions" Relationship="DBMapsModel.Pos_Map" FromRole="Map" ToRole="Position" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="ID_position" />
+    </Key>
+    <Property Name="CoordX" Type="Int32" />
+    <Property Name="CoordY" Type="Int32" />
+    <Property Name="Angle" Type="Int32" />
+    <Property Name="ID_map" Type="Int32" />
+    <Property Name="ID_position" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Map" Relationship="DBMapsModel.Pos_Map" FromRole="Position" ToRole="Map" />
+  </EntityType>
+  <Association Name="Camera_env">
+    <End Role="Environment" Type="DBMapsModel.Environment" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Camera" Type="DBMapsModel.Camera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Environment">
+        <PropertyRef Name="ID_environment" />
+      </Principal>
+      <Dependent Role="Camera">
+        <PropertyRef Name="ID_environment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Map_env">
+    <End Role="Environment" Type="DBMapsModel.Environment" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Map" Type="DBMapsModel.Map" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Environment">
+        <PropertyRef Name="ID_environment" />
+      </Principal>
+      <Dependent Role="Map">
+        <PropertyRef Name="ID_environment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pos_Map">
+    <End Role="Map" Type="DBMapsModel.Map" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Position" Type="DBMapsModel.Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Map">
+        <PropertyRef Name="ID_map" />
+      </Principal>
+      <Dependent Role="Position">
+        <PropertyRef Name="ID_map" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBMapsModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DBMapsModelStoreContainer">
+          <EntitySet Name="Camera" EntityType="DBMapsModel.Store.Camera" store:Type="Tables" />
+          <EntitySet Name="Environment" EntityType="DBMapsModel.Store.Environment" store:Type="Tables" />
+          <EntitySet Name="Map" EntityType="DBMapsModel.Store.Map" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="DBMapsModel.Store.Position" store:Type="Tables" />
+          <AssociationSet Name="Camera_env" Association="DBMapsModel.Store.Camera_env">
+            <End Role="Environment" EntitySet="Environment" />
+            <End Role="Camera" EntitySet="Camera" />
+          </AssociationSet>
+          <AssociationSet Name="Map_env" Association="DBMapsModel.Store.Map_env">
+            <End Role="Environment" EntitySet="Environment" />
+            <End Role="Map" EntitySet="Map" />
+          </AssociationSet>
+          <AssociationSet Name="Pos_Map" Association="DBMapsModel.Store.Pos_Map">
+            <End Role="Map" EntitySet="Map" />
+            <End Role="Position" EntitySet="Position" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Camera">
+          <Key>
+            <PropertyRef Name="ID_camera" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Frame_rate" Type="int" />
+          <Property Name="Resolution_video" Type="int" />
+          <Property Name="Resolution_matrix" Type="int" />
+          <Property Name="ID_environment" Type="int" />
+          <Property Name="ID_camera" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Environment">
+          <Key>
+            <PropertyRef Name="ID_environment" />
+          </Key>
+          <Property Name="Illumination" Type="int" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="Robots_width" Type="int" />
+          <Property Name="ID_environment" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="ID_map" />
+          </Key>
+          <Property Name="Floor" Type="int" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Scale" Type="int" />
+          <Property Name="ID_environment" Type="int" />
+          <Property Name="ID_map" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="ID_position" />
+          </Key>
+          <Property Name="CoordX" Type="int" />
+          <Property Name="CoordY" Type="int" />
+          <Property Name="Angle" Type="int" />
+          <Property Name="ID_map" Type="int" />
+          <Property Name="ID_position" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="Camera_env">
+          <End Role="Environment" Type="DBMapsModel.Store.Environment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Camera" Type="DBMapsModel.Store.Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Environment">
+              <PropertyRef Name="ID_environment" />
+            </Principal>
+            <Dependent Role="Camera">
+              <PropertyRef Name="ID_environment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Map_env">
+          <End Role="Environment" Type="DBMapsModel.Store.Environment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Map" Type="DBMapsModel.Store.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Environment">
+              <PropertyRef Name="ID_environment" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="ID_environment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pos_Map">
+          <End Role="Map" Type="DBMapsModel.Store.Map" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Position" Type="DBMapsModel.Store.Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Map">
+              <PropertyRef Name="ID_map" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="ID_map" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBMapsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DBMapsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cameras" EntityType="DBMapsModel.Camera" />
+          <EntitySet Name="Environments" EntityType="DBMapsModel.Environment" />
+          <EntitySet Name="Maps" EntityType="DBMapsModel.Map" />
+          <EntitySet Name="Positions" EntityType="DBMapsModel.Position" />
+          <AssociationSet Name="Camera_env" Association="DBMapsModel.Camera_env">
+            <End Role="Environment" EntitySet="Environments" />
+            <End Role="Camera" EntitySet="Cameras" />
+          </AssociationSet>
+          <AssociationSet Name="Map_env" Association="DBMapsModel.Map_env">
+            <End Role="Environment" EntitySet="Environments" />
+            <End Role="Map" EntitySet="Maps" />
+          </AssociationSet>
+          <AssociationSet Name="Pos_Map" Association="DBMapsModel.Pos_Map">
+            <End Role="Map" EntitySet="Maps" />
+            <End Role="Position" EntitySet="Positions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Camera">
+          <Key>
+            <PropertyRef Name="ID_camera" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Frame_rate" Type="Int32" />
+          <Property Name="Resolution_video" Type="Int32" />
+          <Property Name="Resolution_matrix" Type="Int32" />
+          <Property Name="ID_environment" Type="Int32" />
+          <Property Name="ID_camera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Environment" Relationship="DBMapsModel.Camera_env" FromRole="Camera" ToRole="Environment" />
+        </EntityType>
+        <EntityType Name="Environment">
+          <Key>
+            <PropertyRef Name="ID_environment" />
+          </Key>
+          <Property Name="Illumination" Type="Int32" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Robots_width" Type="Int32" />
+          <Property Name="ID_environment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Cameras" Relationship="DBMapsModel.Camera_env" FromRole="Environment" ToRole="Camera" />
+          <NavigationProperty Name="Maps" Relationship="DBMapsModel.Map_env" FromRole="Environment" ToRole="Map" />
+        </EntityType>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="ID_map" />
+          </Key>
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Scale" Type="Int32" />
+          <Property Name="ID_environment" Type="Int32" />
+          <Property Name="ID_map" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Environment" Relationship="DBMapsModel.Map_env" FromRole="Map" ToRole="Environment" />
+          <NavigationProperty Name="Positions" Relationship="DBMapsModel.Pos_Map" FromRole="Map" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="ID_position" />
+          </Key>
+          <Property Name="CoordX" Type="Int32" />
+          <Property Name="CoordY" Type="Int32" />
+          <Property Name="Angle" Type="Int32" />
+          <Property Name="ID_map" Type="Int32" />
+          <Property Name="ID_position" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Map" Relationship="DBMapsModel.Pos_Map" FromRole="Position" ToRole="Map" />
+        </EntityType>
+        <Association Name="Camera_env">
+          <End Role="Environment" Type="DBMapsModel.Environment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Camera" Type="DBMapsModel.Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Environment">
+              <PropertyRef Name="ID_environment" />
+            </Principal>
+            <Dependent Role="Camera">
+              <PropertyRef Name="ID_environment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Map_env">
+          <End Role="Environment" Type="DBMapsModel.Environment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Map" Type="DBMapsModel.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Environment">
+              <PropertyRef Name="ID_environment" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="ID_environment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pos_Map">
+          <End Role="Map" Type="DBMapsModel.Map" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Position" Type="DBMapsModel.Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Map">
+              <PropertyRef Name="ID_map" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="ID_map" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBMapsModelStoreContainer" CdmEntityContainer="DBMapsEntities">
+          <EntitySetMapping Name="Cameras">
+            <EntityTypeMapping TypeName="DBMapsModel.Camera">
+              <MappingFragment StoreEntitySet="Camera">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Frame_rate" ColumnName="Frame_rate" />
+                <ScalarProperty Name="Resolution_video" ColumnName="Resolution_video" />
+                <ScalarProperty Name="Resolution_matrix" ColumnName="Resolution_matrix" />
+                <ScalarProperty Name="ID_environment" ColumnName="ID_environment" />
+                <ScalarProperty Name="ID_camera" ColumnName="ID_camera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Environments">
+            <EntityTypeMapping TypeName="DBMapsModel.Environment">
+              <MappingFragment StoreEntitySet="Environment">
+                <ScalarProperty Name="Illumination" ColumnName="Illumination" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Robots_width" ColumnName="Robots_width" />
+                <ScalarProperty Name="ID_environment" ColumnName="ID_environment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="DBMapsModel.Map">
+              <MappingFragment StoreEntitySet="Map">
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+                <ScalarProperty Name="ID_environment" ColumnName="ID_environment" />
+                <ScalarProperty Name="ID_map" ColumnName="ID_map" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="DBMapsModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="CoordX" ColumnName="CoordX" />
+                <ScalarProperty Name="CoordY" ColumnName="CoordY" />
+                <ScalarProperty Name="Angle" ColumnName="Angle" />
+                <ScalarProperty Name="ID_map" ColumnName="ID_map" />
+                <ScalarProperty Name="ID_position" ColumnName="ID_position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

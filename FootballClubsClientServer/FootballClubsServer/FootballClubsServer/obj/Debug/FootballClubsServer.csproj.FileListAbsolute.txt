@@ -9,3 +9,4 @@ D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServe
 D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\obj\Debug\FootballClubsServer.csprojResolveAssemblyReference.cache
 D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\Newtonsoft.Json.dll
 D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\Newtonsoft.Json.xml
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsServer\FootballClubsServer\bin\Debug\FootballClubsServer.XML

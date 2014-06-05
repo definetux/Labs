@@ -1,10 +1,28 @@
 ﻿<Window x:Class="MapBuilder.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Построение карты" Height="350" Width="525" WindowStyle="ToolWindow" HorizontalContentAlignment="Center" Background="#FFFBB54F" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Button" Height="23" HorizontalAlignment="Left" Name="button1" VerticalAlignment="Top" Width="75" Margin="193,84,0,0" Click="button1_Click" />
-        <TextBlock Height="170" HorizontalAlignment="Left" Margin="39,118,0,0" Name="txtCoord" Text="TextBlock" VerticalAlignment="Top" Width="442" />
-        <Image Height="158" HorizontalAlignment="Left" Margin="232,118,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="218" />
+        <Image Source="/Images/map_sample.jpg" Margin="100,23,114,140" Stretch="Fill"/>
+        <Button Content="Перейти к системе" Height="38" HorizontalAlignment="Center" x:Name="btnShowInfo" VerticalAlignment="Top" Width="144" Margin="100,266,275,0" Click="btnShowInfo_Click" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FFFFD35F" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Просмотр информации" Height="38" HorizontalAlignment="Center" x:Name="btnShowQuerys" VerticalAlignment="Top" Width="144" Margin="261,266,114,0" Click="btnShowQuerys_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FFFFD35F" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

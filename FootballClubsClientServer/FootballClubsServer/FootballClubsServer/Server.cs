@@ -12,26 +12,39 @@ using System.Collections;
 
 namespace FootballClubsServer
 {
+    /// <summary>
+    /// Модуль сервера для обработки сообщений
+    /// </summary>
     class Server
     {
+        /// <summary>
+        /// Размер буфера
+        /// </summary>
         const int BUFFER_SIZE = 512;
 
         private int port;
 
         private TcpListener tcpL;
 
-        //private NetworkStream stream;
-
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="port"></param>
         public Server( int port )
         {
             this.port = port;
             tcpL = new TcpListener( IPAddress.Any, port );
         }
 
+        /// <summary>
+        /// Запуск сервера
+        /// </summary>
+        /// <returns> Результат запуска </returns>
         public bool StartServer( )
         {
             try
             {
+                // Запуск слушателя порта
                 tcpL.Start( );
 
                 string log = "Начало сессии";
@@ -39,6 +52,7 @@ namespace FootballClubsServer
                 Logger.PringLog( log ); 
                 Logger.SaveLog( log );
 
+                // Ожидание клиентов
                 WaitSocket( );
                 return true;
             }
@@ -49,10 +63,14 @@ namespace FootballClubsServer
             }
         }
 
+        /// <summary>
+        /// Ожидание клиентов
+        /// </summary>
         public void WaitSocket( )
         {
             while( true )
             {
+                // Получение связи с клиентом
                 TcpClient socket = tcpL.AcceptTcpClient( );
 
                 string log = "Подключился клиент: " + socket.Client.RemoteEndPoint.ToString( );
@@ -60,16 +78,22 @@ namespace FootballClubsServer
                 Logger.PringLog( log );
                 Logger.SaveLog( log );
 
+                // Обработка сообщений клиента
                 new Thread( new ParameterizedThreadStart( HandlingSocket ) ).Start( socket );
             }
         }
 
+        /// <summary>
+        /// Обработка сообщений клиента
+        /// </summary>
+        /// <param name="client"> Клиент </param>
         public void HandlingSocket( object client )
         {
             TcpClient socket = client as TcpClient;
 
             if( socket != null && socket.Connected )
             {
+                // Пока существует связь
                 while( socket.Connected )
                 {
                     byte[ ] buffer = new byte[ BUFFER_SIZE ];
@@ -80,6 +104,7 @@ namespace FootballClubsServer
 
                     try
                     {
+                        // Пока поток не пуст, читаем данные
                         do
                         {
                             bytesRec = stream.Read( buffer, 0, buffer.Length );
@@ -88,6 +113,7 @@ namespace FootballClubsServer
                             
                         } while( stream.DataAvailable );
 
+                        // Обработка сообщений
                         if( message != String.Empty )
                             HandlignMessage( message, stream );
                     }
@@ -104,12 +130,18 @@ namespace FootballClubsServer
             }
         }
 
+        /// <summary>
+        /// Обработка сообщения
+        /// </summary>
+        /// <param name="message"> Текст сообщения </param>
+        /// <param name="stream"> Поток для ответа </param>
         private void HandlignMessage( string message, NetworkStream stream )
         {
             string[ ] args = message.Split( '|' );
             string result = "";
             string log = "";
 
+            // Выбор команды
             switch( args[0] )
             {
                 case "AddClub":
@@ -499,12 +531,18 @@ namespace FootballClubsServer
                     }
                     break;
             }
+            // Отправка ответа
             SendMessage( result, stream );
 
             Logger.PringLog( log );
             Logger.SaveLog( log );
         }
 
+        /// <summary>
+        /// Ответ клиенту
+        /// </summary>
+        /// <param name="message"> Текст ответа </param>
+        /// <param name="stream"> Поток для ответа </param>
         public void SendMessage( string message, NetworkStream stream )
         {
             byte[ ] data = Encoding.Unicode.GetBytes( message );

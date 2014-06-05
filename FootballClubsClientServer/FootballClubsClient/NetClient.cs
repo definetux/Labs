@@ -10,18 +10,38 @@ using System.Windows;
 
 namespace FootballClubsClient
 {
+    /// <summary>
+    /// Модуль клиента для работы с сервером
+    /// </summary>
     class NetClient
     {
+        /// <summary>
+        /// Размер буфера
+        /// </summary>
         const int BUFFER_SIZE = 512;
 
+        /// <summary>
+        /// IP адрес сервера
+        /// </summary>
         private string ipAddress;
 
+        /// <summary>
+        /// Номер порта сервера
+        /// </summary>
         private int port;
 
         private TcpClient tcpC;
 
+        /// <summary>
+        /// Проверка соединения
+        /// </summary>
         public static bool IsConnected = false;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="ip"> IP адрес </param>
+        /// <param name="port"> Номер порта </param>
         public NetClient( string ip, int port )
         {
             this.ipAddress = ip;
@@ -29,6 +49,10 @@ namespace FootballClubsClient
             this.tcpC = new TcpClient( );
         }
 
+        /// <summary>
+        /// Выполнить соединение
+        /// </summary>
+        /// <returns> Результат соединения </returns>
         public bool Connect( )
         {
             try
@@ -45,6 +69,11 @@ namespace FootballClubsClient
             }
         }
 
+        /// <summary>
+        /// Отправить сообщение серверу
+        /// </summary>
+        /// <param name="message"> Текст сообщения </param>
+        /// <returns> Ответ от сервера </returns>
         public string SendMessage( string message )
         {
             Byte[] buffer = Encoding.Unicode.GetBytes( message );
@@ -55,9 +84,11 @@ namespace FootballClubsClient
 
             try
             {
+                // Записать данные в поток
                 NetworkStream stream = tcpC.GetStream( );
                 stream.Write( buffer, 0, buffer.Length );
 
+                // Читать данные из потока, по не пуст
                 do
                 {
                     Count = stream.Read( Buffer, 0, Buffer.Length );

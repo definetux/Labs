@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBMapsModelStoreContainer" CdmEntityContainer="DBMapsEntities">
+    <EntitySetMapping Name="Cameras">
+      <EntityTypeMapping TypeName="DBMapsModel.Camera">
+        <MappingFragment StoreEntitySet="Camera">
+          <ScalarProperty Name="ID_camera" ColumnName="ID_camera" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Frame_rate" ColumnName="Frame_rate" />
+          <ScalarProperty Name="Resolution_video" ColumnName="Resolution_video" />
+          <ScalarProperty Name="Resolution_matrix" ColumnName="Resolution_matrix" />
+          <ScalarProperty Name="ID_environment" ColumnName="ID_environment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Environments">
+      <EntityTypeMapping TypeName="DBMapsModel.Environment">
+        <MappingFragment StoreEntitySet="Environment">
+          <ScalarProperty Name="ID_environment" ColumnName="ID_environment" />
+          <ScalarProperty Name="Illumination" ColumnName="Illumination" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Robots_width" ColumnName="Robots_width" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maps">
+      <EntityTypeMapping TypeName="DBMapsModel.Map">
+        <MappingFragment StoreEntitySet="Map">
+          <ScalarProperty Name="ID_map" ColumnName="ID_map" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Scale" ColumnName="Scale" />
+          <ScalarProperty Name="ID_environment" ColumnName="ID_environment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="DBMapsModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="ID_position" ColumnName="ID_position" />
+          <ScalarProperty Name="CoordX" ColumnName="CoordX" />
+          <ScalarProperty Name="CoordY" ColumnName="CoordY" />
+          <ScalarProperty Name="Angle" ColumnName="Angle" />
+          <ScalarProperty Name="ID_map" ColumnName="ID_map" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

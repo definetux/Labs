@@ -1,0 +1,498 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FootballClubsServer</name>
+    </assembly>
+    <members>
+        <member name="T:FootballClubsServer.BestPlayers">
+            <summary>
+            Структура запроса Лучшие игроки
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.NewClub">
+            <summary>
+            Структура таблицы Клуб
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.EntitiesController">
+            <summary>
+            Класс позволяет работать с EDM посредством запросов LINQ TO Entities
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.Save(FootballClubsServer.Data.FootballClubsEntities)">
+            <summary>
+            Сохранение данных в БД
+            </summary>
+            <param name="entities"> Модель данных </param>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.AddObject(System.Object)">
+            <summary>
+            Добавить объект в модель
+            </summary>
+            <param name="entity"> Объект данных </param>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.DeleteObject(System.Object)">
+            <summary>
+            Удалить объект из модели
+            </summary>
+            <param name="entity"> Объект данных </param>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByClubId(System.Int32)">
+            <summary>
+            Возвращает список игроков по ID клуба
+            </summary>
+            <param name="clubId"> ID клуба </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetStaffsByClubId(System.Int32)">
+            <summary>
+            Возвращает список персонала по ID клуба
+            </summary>
+            <param name="clubId"> ID клуба </param>
+            <returns> Список персонала </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetClubsById(System.Int32)">
+            <summary>
+            Возвращает клуб по ID 
+            </summary>
+            <param name="clubId"> ID клуба </param>
+            <returns> Клуб </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByGoals(System.Int32)">
+            <summary>
+            Возвращает игроков по забитым голам
+            </summary>
+            <param name="goals"> Количество забитых голов </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByClub(System.String)">
+            <summary>
+            Возвращает список игроков, играющих за определенный клуб
+            </summary>
+            <param name="clubName"> Название клуба </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersById(System.Int32)">
+            <summary>
+            Возвращает игрока по ID 
+            </summary>
+            <param name="SelectedId"> ID игрока </param>
+            <returns> Игрок </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetStaffsById(System.Int32)">
+            <summary>
+            Возвращает сотрудника по ID
+            </summary>
+            <param name="SelectedId"> ID сотрудника </param>
+            <returns> Сотрудник </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetOldPlayers(System.String)">
+            <summary>
+            Возвращает игроков старше определенного возраста
+            </summary>
+            <param name="age"> Возраст </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetBestPlayers">
+            <summary>
+            Возвращает игроков, которые забили больше всех голов за свой клуб
+            </summary>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetCountStaffByClub">
+            <summary>
+            Возвращает количество персонала по каждому клубу
+            </summary>
+            <returns> Список клубов </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersInfo(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Возвращает информацию об игроках, которая фильтруется с помощью определенных критериев
+            </summary>
+            <param name="highWin"> Максимальное количество побед </param>
+            <param name="lowWin"> Минимальное количество побед </param>
+            <param name="highGoals"> Максимальное количество забитых голов </param>
+            <param name="lowGoals"> Минимальное количество забитых голов </param>
+            <param name="highAge"> Максимальный возраст игрока </param>
+            <param name="lowAge"> Минимальный возраст игрока </param>
+            <param name="rowsCount"> Количество выводимых записей </param>
+            <param name="firstChars"> Первые символы названия клуба </param>
+            <param name="sort"> Порядок сортировки </param>
+            <returns> Список игроков </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByAge(System.Int32,System.Int32)">
+            <summary>
+            Выбрать игроков по возрасту
+            </summary>
+            <param name="highAge"> До </param>
+            <param name="lowAge"> От </param>
+            <returns> Набор данных </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByClubName(System.String)">
+            <summary>
+            Выбрать игроков по названию клуба
+            </summary>
+            <param name="clubName"> Название клуба </param>
+            <returns> Набор данных </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByClubWin(System.Int32,System.Int32)">
+            <summary>
+            Выбрать игроков по количеству выигранных матчей
+            </summary>
+            <param name="highWin"> До </param>
+            <param name="lowWin"> От </param>
+            <returns> Набор данных </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetPlayersByGoals(System.Int32,System.Int32)">
+            <summary>
+            Выбрать игроков по забитым мячам
+            </summary>
+            <param name="highGoals"> До </param>
+            <param name="lowGoals"> От </param>
+            <returns> Набор данных </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetQueryAnd(System.Collections.Generic.IEnumerable{FootballClubsServer.PlayerInfo},System.Collections.Generic.IEnumerable{FootballClubsServer.PlayerInfo})">
+            <summary>
+            Условие И
+            </summary>
+            <param name="oldQuery"> Прошлый запрос </param>
+            <param name="newQuery"> Новый запрос </param>
+            <returns> Набор данных </returns>
+        </member>
+        <member name="M:FootballClubsServer.EntitiesController.GetQueryOr(System.Collections.Generic.IEnumerable{FootballClubsServer.PlayerInfo},System.Collections.Generic.IEnumerable{FootballClubsServer.PlayerInfo})">
+            <summary>
+            Условие Или
+            </summary>
+            <param name="oldQuery"> Прошлый запрос </param>
+            <param name="newQuery"> Новый запрос </param>
+            <returns> Набор данных </returns>
+        </member>
+        <member name="P:FootballClubsServer.EntitiesController.Entities">
+            <summary>
+            Считывание данных
+            </summary>
+        </member>
+        <member name="T:FootballClubsClient.FootballClubsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.Data.FootballClubsDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.Data.FootballClubsEntities">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.FootballClubsEntities.#ctor">
+            <summary>
+            Initializes a new FootballClubsEntities object using the connection string found in the 'FootballClubsEntities' section of the application configuration file.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.FootballClubsEntities.#ctor(System.String)">
+            <summary>
+            Initialize a new FootballClubsEntities object.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.FootballClubsEntities.#ctor(System.Data.EntityClient.EntityConnection)">
+            <summary>
+            Initialize a new FootballClubsEntities object.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.FootballClubsEntities.AddToClubs(FootballClubsServer.Data.Club)">
+            <summary>
+            Deprecated Method for adding a new object to the Clubs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.FootballClubsEntities.AddToPlayers(FootballClubsServer.Data.Player)">
+            <summary>
+            Deprecated Method for adding a new object to the Players EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.FootballClubsEntities.AddToStaffs(FootballClubsServer.Data.Staff)">
+            <summary>
+            Deprecated Method for adding a new object to the Staffs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.FootballClubsEntities.Clubs">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.FootballClubsEntities.Players">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.FootballClubsEntities.Staffs">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.Data.Club">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.Club.CreateClub(System.Int32)">
+            <summary>
+            Create a new Club object.
+            </summary>
+            <param name="clubID">Initial value of the ClubID property.</param>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.ClubID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.Name">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.City">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.NumberOfMatches">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.WinningMatches">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.Logo">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.Anthem">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.Players">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Club.Staffs">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.Data.Player">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.Player.CreatePlayer(System.Int32)">
+            <summary>
+            Create a new Player object.
+            </summary>
+            <param name="playerID">Initial value of the PlayerID property.</param>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.PlayerID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.ClubID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.LastName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.FirstName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.Patronymic">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.Number">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.Position">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.Goals">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.Birthdate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.Club">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Player.ClubReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.Data.Staff">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Data.Staff.CreateStaff(System.Int32)">
+            <summary>
+            Create a new Staff object.
+            </summary>
+            <param name="staffID">Initial value of the StaffID property.</param>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.StaffID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.ClubID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.LastName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.FirstName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.Patronymic">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.Post">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.Experience">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.Club">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:FootballClubsServer.Data.Staff.ClubReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.NewPlayer">
+            <summary>
+            Структура таблицы Игрок
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.PlayerInfo">
+            <summary>
+            Структура запроса Информация об игроках
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.Logger">
+            <summary>
+            Класс для работы с журналированием
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Logger.PringLog(System.String)">
+            <summary>
+            Вывести лог в консоль
+            </summary>
+            <param name="log"> Текст лога </param>
+        </member>
+        <member name="M:FootballClubsServer.Logger.SaveLog(System.String)">
+            <summary>
+            Сохранить лог в файл
+            </summary>
+            <param name="log"> Текст лога </param>
+        </member>
+        <member name="T:FootballClubsServer.Server">
+            <summary>
+            Модуль сервера для обработки сообщений
+            </summary>
+        </member>
+        <member name="F:FootballClubsServer.Server.BUFFER_SIZE">
+            <summary>
+            Размер буфера
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Server.#ctor(System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="port"></param>
+        </member>
+        <member name="M:FootballClubsServer.Server.StartServer">
+            <summary>
+            Запуск сервера
+            </summary>
+            <returns> Результат запуска </returns>
+        </member>
+        <member name="M:FootballClubsServer.Server.WaitSocket">
+            <summary>
+            Ожидание клиентов
+            </summary>
+        </member>
+        <member name="M:FootballClubsServer.Server.HandlingSocket(System.Object)">
+            <summary>
+            Обработка сообщений клиента
+            </summary>
+            <param name="client"> Клиент </param>
+        </member>
+        <member name="M:FootballClubsServer.Server.HandlignMessage(System.String,System.Net.Sockets.NetworkStream)">
+            <summary>
+            Обработка сообщения
+            </summary>
+            <param name="message"> Текст сообщения </param>
+            <param name="stream"> Поток для ответа </param>
+        </member>
+        <member name="M:FootballClubsServer.Server.SendMessage(System.String,System.Net.Sockets.NetworkStream)">
+            <summary>
+            Ответ клиенту
+            </summary>
+            <param name="message"> Текст ответа </param>
+            <param name="stream"> Поток для ответа </param>
+        </member>
+        <member name="T:FootballClubsServer.NewStaff">
+            <summary>
+            Структура таблицы Персонал
+            </summary>
+        </member>
+        <member name="T:FootballClubsServer.StaffsInfo">
+            <summary>
+            Структура запроса Количество персонала
+            </summary>
+        </member>
+    </members>
+</doc>

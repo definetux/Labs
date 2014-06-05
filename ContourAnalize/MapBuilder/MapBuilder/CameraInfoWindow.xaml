@@ -1,0 +1,73 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:MapBuilder" mc:Ignorable="d" x:Class="MapBuilder.CameraInfoWindow"
+        Title="Информация о камере" Height="324.505" Width="797.803" Background="#FFFBB54F" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <CollectionViewSource x:Key="camerasViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Camera}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource camerasViewSource}">
+        <DataGrid x:Name="camerasDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,309,60" RowDetailsVisibilityMode="VisibleWhenSelected" BorderBrush="{x:Null}" Background="{x:Null}" SelectedIndex="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Наименование" Width="*" CanUserReorder="False" CanUserResize="False" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="frame_rateColumn" Binding="{Binding Frame_rate}" Header="Частота кадров" Width="SizeToHeader" CanUserSort="False" CanUserReorder="False" CanUserResize="False" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="resolution_videoColumn" Binding="{Binding Resolution_video}" Header="Разрешение видео" Width="SizeToHeader" CanUserSort="False" CanUserReorder="False" CanUserResize="False" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="resolution_matrixColumn" Binding="{Binding Resolution_matrix}" Header="Разрешение матрицы" Width="SizeToHeader" CanUserReorder="False" CanUserResize="False" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="iD_environmentColumn" Binding="{Binding ID_environment}" Header="ID окружающей среды" Width="SizeToHeader" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn x:Name="iD_cameraColumn" Binding="{Binding ID_camera}" Header="ID" Width="SizeToHeader" CanUserReorder="False" CanUserResize="False" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TabControl HorizontalAlignment="Left" Margin="486,10,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FF8C8E94">
+            <TabItem Header="Добавить запись" Margin="0" Background="{x:Null}" BorderBrush="#FF8C8E94">
+                <Grid Margin="0,0,0,0">
+                    <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="151,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="txtVideo" HorizontalAlignment="Left" Height="23" Margin="151,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Наименование:" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Width="141"/>
+                    <Label Content="Частота кадров:" HorizontalAlignment="Left" Margin="8,41,0,0" VerticalAlignment="Top" Width="122"/>
+                    <Label Content="Разрешение видео:" HorizontalAlignment="Left" Margin="8,74,0,0" VerticalAlignment="Top" Width="141"/>
+                    <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="129" Height="39" Click="btnAdd_Click_1">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFFD35F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnClear" Content="Очистить" HorizontalAlignment="Left" Margin="144,146,0,0" VerticalAlignment="Top" Width="127" Height="39" Click="btnClear_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFFD35F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="Разрешение матрицы:" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="139"/>
+                    <TextBox x:Name="txtFrame" HorizontalAlignment="Left" Height="23" Margin="151,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="txtMatrix" HorizontalAlignment="Left" Height="23" Margin="151,108,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Удалить запись" Background="{x:Null}" BorderBrush="#FF8C8E94">
+                <Grid>
+                    <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="93,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="ID записи:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnDelete" Content="Удалить" HorizontalAlignment="Left" Margin="93,47,0,0" VerticalAlignment="Top" Width="120" Height="26" Click="btnDelete_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFFD35F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

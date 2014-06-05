@@ -45,11 +45,6 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
         {
-            //if (audioPlayer == AudioPlayer.Play)
-            //{
-            //    player.Stop();
-            //    audioPlayer = AudioPlayer.Stop;
-            //}
             base.OnClosed(e);
         }
 
@@ -114,8 +109,6 @@ namespace FootballClubsClient
         {
             if (clubsDataGrid.SelectedItem is NewClub)
                this.SelectedId = ((NewClub)clubsDataGrid.SelectedItem).ClubID;
-
-            //var clubs = DBProvider.GetClubsById(this.SelectedId);
         }
 
         /// <summary>
@@ -150,7 +143,6 @@ namespace FootballClubsClient
         /// <param name="e"></param>
         private void clubsDataGrid_Sorting( object sender, DataGridSortingEventArgs e )
         {
-            //clubsDataGrid.ItemsSource = EntitiesController.Entities.Clubs.OrderBy( p => p.Name );
         }      
     }
 }

@@ -20,18 +20,32 @@ namespace FootballClubsClient.Views
     /// </summary>
     public partial class ConnectWindow : Window, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Номер порта
+        /// </summary>
         private int port;
 
+        /// <summary>
+        /// IP адрес сервера
+        /// </summary>
         private String ipAddress;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Обработка изменений полей формы
+        /// </summary>
+        /// <param name="info"></param>
         public void OnPropertyChanged( string info )
         {
             if( PropertyChanged != null )
                 PropertyChanged( this, new PropertyChangedEventArgs( info ) );
         }
 
+        /// <summary>
+        /// IP адрес сервера
+        /// </summary>
         public String IpAddress
         {
             get
@@ -45,6 +59,9 @@ namespace FootballClubsClient.Views
             }
         }
 
+        /// <summary>
+        /// Номер порта
+        /// </summary>
         public String Port
         {
             get
@@ -58,6 +75,9 @@ namespace FootballClubsClient.Views
             }
         }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public ConnectWindow( )
         {
             port = 1532;
@@ -71,6 +91,11 @@ namespace FootballClubsClient.Views
             Close( );
         }
 
+        /// <summary>
+        /// Отобразить окно подключения
+        /// </summary>
+        /// <param name="port"> Номер порта </param>
+        /// <param name="ip"> IP адрес сервера </param>
         public void Show( out int port, out String ip )
         {
             if( this.ShowDialog( ) == true )

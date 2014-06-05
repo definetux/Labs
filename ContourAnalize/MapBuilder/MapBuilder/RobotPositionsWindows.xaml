@@ -1,0 +1,68 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:MapBuilder" mc:Ignorable="d" x:Class="MapBuilder.RobotPositionsWindows"
+        Title="Информация о позоция робота" Height="300" Background="#FFFBB54F" Width="661.539" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <CollectionViewSource x:Key="positionsViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Position}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource positionsViewSource}">
+        <DataGrid x:Name="positionsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,306,71" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" BorderBrush="{x:Null}" SelectedIndex="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="coordXColumn" Binding="{Binding CoordX}" Header="Координата Х" Width="*"/>
+                <DataGridTextColumn x:Name="coordYColumn" Binding="{Binding CoordY}" Header="Координата Y" Width="*"/>
+                <DataGridTextColumn x:Name="angleColumn" Binding="{Binding Angle}" Header="Угол поворота" Width="*"/>
+                <DataGridTextColumn x:Name="iD_mapColumn" Binding="{Binding ID_map}" Header="ID map" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn x:Name="iD_positionColumn" Binding="{Binding ID_position}" Header="ID" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TabControl HorizontalAlignment="Left" Height="189" Margin="353,10,0,0" VerticalAlignment="Top" Width="291" Background="{x:Null}" BorderBrush="#FF8C8E94">
+            <TabItem Header="Добавить запись" Margin="0" Background="{x:Null}" BorderBrush="#FF8C8E94">
+                <Grid Margin="0,0,0,0">
+                    <TextBox x:Name="txtCoordX" HorizontalAlignment="Left" Height="23" Margin="151,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="txtCoordY" HorizontalAlignment="Left" Height="23" Margin="151,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="txtAngle" HorizontalAlignment="Left" Height="23" Margin="151,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Координата Х:" HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Width="141"/>
+                    <Label Content="Координата Y:" HorizontalAlignment="Left" Margin="8,41,0,0" VerticalAlignment="Top" Width="122"/>
+                    <Label Content="Угол поворота:" HorizontalAlignment="Left" Margin="8,74,0,0" VerticalAlignment="Top" Width="122"/>
+                    <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="129" Height="39" Click="btnAdd_Click_1" RenderTransformOrigin="0.503,-0.64">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFFD35F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnClear" Content="Очистить" HorizontalAlignment="Left" Margin="144,110,0,0" VerticalAlignment="Top" Width="127" Height="39" Click="btnClear_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFFD35F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Удалить запись" BorderBrush="#FF8C8E94" Background="{x:Null}">
+                <Grid>
+                    <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="93,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="ID записи:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnDelete" Content="Удалить" HorizontalAlignment="Left" Margin="93,47,0,0" VerticalAlignment="Top" Width="120" Height="26" Click="btnDelete_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFFD35F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

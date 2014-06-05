@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FootballClubsServer
 {
+    /// <summary>
+    /// Структура запроса Количество персонала
+    /// </summary>
     class StaffsInfo
     {
         public String Клуб

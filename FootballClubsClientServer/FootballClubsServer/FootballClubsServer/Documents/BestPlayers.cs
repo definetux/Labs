@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FootballClubsServer
 {
+    /// <summary>
+    /// Структура запроса Лучшие игроки
+    /// </summary>
     class BestPlayers
     {
         public String Фамилия

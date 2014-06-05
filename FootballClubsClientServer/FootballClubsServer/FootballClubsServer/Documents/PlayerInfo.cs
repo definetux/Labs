@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FootballClubsServer
 {
+    /// <summary>
+    /// Структура запроса Информация об игроках
+    /// </summary>
     public class PlayerInfo
     {
         public int Id

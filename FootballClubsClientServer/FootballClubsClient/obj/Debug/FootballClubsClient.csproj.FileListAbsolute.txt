@@ -31,3 +31,4 @@ D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsClien
 D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsClient\obj\Debug\Views\ConnectWindow.g.cs
 D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsClient\bin\Debug\Newtonsoft.Json.dll
 D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsClient\bin\Debug\Newtonsoft.Json.xml
+D:\Visual Studio 2010\Projects\OOTP\FootballClubsClientServer\FootballClubsClient\bin\Debug\FootballClubsClient.XML
